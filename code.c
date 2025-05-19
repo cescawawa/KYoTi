@@ -10,8 +10,42 @@ typedef struct courseProfile{
     float grade;
 } courseProfile;
 
+typedef struct courseToUnit{
+    char code[15];
+    int units;
+} courseToUnit;
+
 // takes a course code and returns how many units that course has
 int codeToUnits(char* code){
+    int codeToUnits(char* cCode){
+    FILE* data = fopen("courseCodeUnits.csv", "r");
+    if(!data){
+        printf("Error. File \"courseCodeUnits.csv\" not found.\n");
+        exit(1);
+    }
+    char buffer[100];
+    int temp;
+    long pos;
+    courseToUnit c;
+
+    fseek(data,0, SEEK_SET);
+
+    while(!feof(data)) {
+        fgets(buffer,100,data);
+        char *data = strtok(buffer, ",");
+        if (data == NULL) break;
+        strcpy(c.code, data);
+
+        data = strtok(NULL, ",");
+        if (data == NULL) break;
+        c.units = atoi(data);
+
+        temp = strcmp(cCode,c.code);
+
+        if(temp==0){
+            return c.units;
+        }
+    }
     return 3;
 }
 
@@ -41,8 +75,8 @@ void inputCourse(FILE* fp){
         "Before we begin, please be reminded of the applications strict input formats.\n"
         "Academic school years should be inputted in the format YYYY-YYYY.\n"
         "Semesters inputs should be a number between 1 to 3. 1 meaning the first semester,\n2 meaning the second semester, and 3 meaning the third/summer semester.\n"
-        "Course codes should be inputed WITHOUT spaces and letters should ALL be uppercase.\n\n"
-        "Sample Input: 2024-2025 2 CMSC21.\n\n"
+        "Course codes should be inputed WITHOUT spaces and letters should ALL be uppercase.\nThe course codes should be the same as those used in the official study plan\ngiven by the OUR.\n\n"
+        "Sample Input: 2024-2025 2 CMSC21\n\n"
     );
 
     while(1) {
@@ -227,6 +261,9 @@ void calcuGWA(FILE* fp){
 
 };
 
+void forecastGWA(FILE* fp){
+    printf("WIP");
+}
 
 
 int main(void){
