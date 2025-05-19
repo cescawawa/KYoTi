@@ -46,6 +46,7 @@ int codeToUnits(char* code){
             return c.units;
         }
     }
+    fclose(data);
     return 3;
 }
 
