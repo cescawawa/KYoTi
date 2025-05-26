@@ -208,7 +208,7 @@ void inputCourse(FILE *fp) {
 
         if (ans) {
             for (;;) {
-                printf("Enter the grade you recieved:\n");
+                printf("Enter the grade you received:\n");
                 read = scanf("%f", &c.grade);
 
                 if (flush_stdin() || read < 1) {
@@ -325,7 +325,7 @@ void inputGrade(FILE *fp) {
         if (strcmp(ay, c.aYear) == 0 && sems == c.sem && c.grade == 0) {
             for (;;) {
                 printf(
-                    "\nDo you wish to add the grade you recieved for the class %s? Input 1 if yes, 0 if no.\n",
+                    "\nDo you wish to add the grade you received for the class %s? Input 1 if yes, 0 if no.\n",
                     c.code
                 );
                 read = scanf("%d", &ans);
@@ -340,7 +340,7 @@ void inputGrade(FILE *fp) {
 
             if (ans) {
                 for (;;) {
-                    printf("Enter the grade you recieved:\n");
+                    printf("Enter the grade you received:\n");
                     read = scanf("%f", &c.grade);
 
                     if (flush_stdin() || read < 1) {
